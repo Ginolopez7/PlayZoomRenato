@@ -7,7 +7,6 @@
     tools:context=".MainActivity">
 
 
-
     <ImageView
         android:id="@+id/image"
         android:layout_width="0dp"
@@ -45,7 +44,7 @@
         android:layout_marginHorizontal="42dp"
         android:layout_marginBottom="42dp"
         android:padding="16dp"
-        android:text="Get Started"
+        android:text="@string/get_started"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textSize="16sp"
