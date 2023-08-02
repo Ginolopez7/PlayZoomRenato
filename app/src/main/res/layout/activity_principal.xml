@@ -21,6 +21,15 @@
         app:title="Principal"
         app:titleTextColor="@color/md_theme_dark_background"/>
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fcv_main"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tb_playzoom" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_add_movie"
         android:layout_width="wrap_content"
@@ -40,6 +49,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         android:textAlignment="center"
+        android:visibility="gone"
         android:text="ginolopez@email.com"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,6 +59,7 @@
         android:id="@+id/close_sesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:text="Cerrar Sesion"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"

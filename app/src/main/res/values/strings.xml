@@ -2,4 +2,6 @@
     <string name="app_name">Playzoom</string>
     <string name="get_started_title">Watch your favorite\n movie</string>
     <string name="get_started">Get Started</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
