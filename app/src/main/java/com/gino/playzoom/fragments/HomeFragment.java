@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.gino.playzoom.R;
+import com.gino.playzoom.data.response.ShowResponse;
+import com.gino.playzoom.data.retrofit.RetrofitHelper;
 import com.gino.playzoom.databinding.FragmentHomeBinding;
 import com.gino.playzoom.model.Movie;
 import com.gino.playzoom.model.Series;
@@ -22,13 +24,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+import retrofit2.http.GET;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+
+
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,6 +50,25 @@ public class HomeFragment extends Fragment {
         binding.rvMoviesResume.setAdapter(adapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext(), LinearLayoutManager.HORIZONTAL, false);
         binding.rvMoviesResume.setLayoutManager(layoutManager);
+        RetrofitHelper.getService().getShows().enqueue(new Callback<ShowResponse>() {
+            @Override
+            public void onResponse(Call<ShowResponse> call, Response<ShowResponse> response) {
+                if(response.isSuccessful()){
+                    assert response.body() != null;
+                    showMovies(response.body().getShowsList());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ShowResponse> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void showMovies(List<Shows> showsList) {
+        RVShowAdapter adapter = new RVShowAdapter(showsList);
+        binding.rvShows.setAdapter(adapter);
     }
 
     private List<Shows> getData() {
